@@ -1,0 +1,216 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <Version>2.1.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Provides a collection of activities designed to help in common operations with DataTables, Files, Programming, Workflows, Security and Diagnostics.</Description>
+    <Authors>Alexandre Toledo Perez</Authors>
+    <Copyright>© 2020-2021 Alexandre Toledo Perez</Copyright>
+    <PackageProjectUrl>https://alexandretperez.github.io/Autossential/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/alexandretperez/Autossential</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>Custom Activity Windows Workflow Foundation UiPath</PackageTags>
+    <PackageId>$(MSBuildProjectName.Replace(".Design", ""))</PackageId>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>packageIcon.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
+    <PackageVersion>2.1.1-$([System.DateTime]::UtcNow.ToString(MMddHHmmss))</PackageVersion>
+  </PropertyGroup>
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadatavalue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
+  
+  <ItemGroup>
+    <None Remove="Controls\CryptographyBaseControl.xaml" />
+    <None Remove="Controls\DockPadControl.xaml" />
+    <None Remove="Designers\AddRangeToCollectionDesigner.xaml" />
+    <None Remove="Designers\AggregateDesigner.xaml" />
+    <None Remove="Designers\CheckPointDesigner.xaml" />
+    <None Remove="Designers\CleanUpFolderDesigner.xaml" />
+    <None Remove="Designers\ContainerDesigner.xaml" />
+    <None Remove="Designers\CultureScopeDesigner.xaml" />
+    <None Remove="Designers\DataRowToDictionaryDesigner.xaml" />
+    <None Remove="Designers\DataTableToTextDesigner.xaml" />
+    <None Remove="Designers\DecrementDesigner.xaml" />
+    <None Remove="Designers\DecryptDataTableDesigner.xaml" />
+    <None Remove="Designers\DecryptTextDesigner.xaml" />
+    <None Remove="Designers\DictionaryToDataTableDesigner.xaml" />
+    <None Remove="Designers\EncryptDataTableDesigner.xaml" />
+    <None Remove="Designers\EncryptTextDesigner.xaml" />
+    <None Remove="Designers\EnumerateFilesDesigner.xaml" />
+    <None Remove="Designers\ExitDesigner.xaml" />
+    <None Remove="Designers\ExtractDataColumnValuesDesigner.xaml" />
+    <None Remove="Designers\ImpersonationScopeDesigner.xaml" />
+    <None Remove="Designers\IncrementDesigner.xaml" />
+    <None Remove="Designers\IsTrueDesigner.xaml" />
+    <None Remove="Designers\IterateDesigner.xaml" />
+    <None Remove="Designers\NextDesigner.xaml" />
+    <None Remove="Designers\PromoteHeadersDesigner.xaml" />
+    <None Remove="Designers\RemoveDataColumnsDesigner.xaml" />
+    <None Remove="Designers\RemoveDuplicateRowsDesigner.xaml" />
+    <None Remove="Designers\RemoveEmptyRowsDesigner.xaml" />
+    <None Remove="Designers\StopwatchDesigner.xaml" />
+    <None Remove="Designers\TransposeDataDesigner.xaml" />
+    <None Remove="Designers\UnzipDesigner.xaml" />
+    <None Remove="Designers\WaitDynamicFileDesigner.xaml" />
+    <None Remove="Designers\WaitFileDesigner.xaml" />
+    <None Remove="Designers\ZipDesigner.xaml" />
+    <None Remove="Designers\ZipEntriesCountDesigner.xaml" />
+    <None Remove="Themes\Default.xaml" />
+    <None Remove="Themes\Icons.xaml" />
+    <Page Include="Controls\CryptographyBaseControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Controls\DockPadControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\AddRangeToCollectionDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\CleanUpFolderDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DataTableToTextDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\ExtractDataColumnValuesDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\IsTrueDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\RemoveDataColumnsDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\RemoveDuplicateRowsDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\StopwatchDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\TransposeDataDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\WaitDynamicFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\ZipEntriesCountDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="PropertyEditors\PropertyEditorResources.xaml">
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <None Include="packageIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Designers\AggregateDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\CheckPointDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\ContainerDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\CultureScopeDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DataRowToDictionaryDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DecrementDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DecryptDataTableDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DecryptTextDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DictionaryToDataTableDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\EncryptDataTableDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\EncryptTextDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\EnumerateFilesDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\ExitDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\IncrementDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\IterateDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\NextDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\PromoteHeadersDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\RemoveEmptyRowsDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\UnzipDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\WaitFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\ZipDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Themes\Icons.xaml">
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Themes\Default.xaml">
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Autossential.Activities\Autossential.Activities.csproj">
+      <PrivateAssets>All</PrivateAssets>
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <Import Project="..\Autossential.Shared.Activities.Design\Autossential.Shared.Activities.Design.projitems" Label="Shared" />
+
+</Project>
